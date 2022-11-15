@@ -16,7 +16,6 @@ export interface DeploymentConfig {
   base_asset_symbol: string
   second_asset_symbol: string
 }
-
 export interface Addresses {
   multisig: string
   addressProvider: string
