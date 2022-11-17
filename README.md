@@ -1,10 +1,6 @@
-# Hub Periphery
+# Liquidation helpers
 
-Peripheral smart contracts to be deployed on Mars Hub
-
-## License
-
-TBD
+Helpers smart contracts
 
 ## Deploy scripts set up 
 

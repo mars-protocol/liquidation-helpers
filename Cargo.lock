@@ -504,35 +504,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "mars-airdrop"
-version = "0.1.0"
-dependencies = [
- "bech32",
- "cosmwasm-schema",
- "cosmwasm-std",
- "cw-storage-plus 0.15.0",
- "cw2",
- "hex",
- "mars-types",
- "ripemd",
- "serde",
- "sha2 0.10.2",
-]
-
-[[package]]
-name = "mars-delegator"
-version = "0.1.0"
-dependencies = [
- "cosmwasm-schema",
- "cosmwasm-std",
- "cw-storage-plus 0.15.0",
- "cw-utils",
- "cw2",
- "mars-types",
- "thiserror",
-]
-
-[[package]]
 name = "mars-health"
 version = "0.1.0"
 dependencies = [
@@ -671,25 +642,6 @@ dependencies = [
  "schemars",
  "serde",
  "thiserror",
-]
-
-[[package]]
-name = "mars-types"
-version = "0.1.0"
-dependencies = [
- "cosmwasm-schema",
- "cosmwasm-std",
-]
-
-[[package]]
-name = "mars-vesting"
-version = "0.1.0"
-dependencies = [
- "cosmwasm-schema",
- "cosmwasm-std",
- "cw-storage-plus 0.15.0",
- "cw2",
- "serde",
 ]
 
 [[package]]
@@ -856,15 +808,6 @@ dependencies = [
  "crypto-bigint",
  "hmac",
  "zeroize",
-]
-
-[[package]]
-name = "ripemd"
-version = "0.1.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1facec54cb5e0dc08553501fa740091086d0259ad0067e0d4103448e4cb22ed3"
-dependencies = [
- "digest 0.10.3",
 ]
 
 [[package]]

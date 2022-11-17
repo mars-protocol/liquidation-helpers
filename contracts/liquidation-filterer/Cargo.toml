@@ -27,8 +27,8 @@ cosmwasm-std = "1.0"
 cw2 = "0.15"
 cw-storage-plus = "0.14"
 schemars = "0.8"
-serde = { version = "1.0.144", default-features = false, features = ["derive"] }
-thiserror = "1.0.33"
+serde = { version = "1.0", default-features = false, features = ["derive"] }
+thiserror = "1.0"
 
 [dev-dependencies]
 mars-testing = { version = "0.1.0", path = "../../../outposts/packages/testing" }

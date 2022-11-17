@@ -1,7 +1,6 @@
 import { setupDeployer } from './setupDeployer'
 import { DeploymentConfig, Addresses } from '../../types/config'
 import { printRed } from '../../utils/chalk'
-// import { atomAsset, osmoAsset } from '../osmosis/config'
 
 export const taskRunner = async (config: DeploymentConfig, address: Addresses) => {
   const deployer = await setupDeployer(config, address)

@@ -1,4 +1,4 @@
-import { DeploymentConfig, AssetConfig, Addresses } from '../../types/config'
+import { DeploymentConfig, Addresses } from '../../types/config'
 
 export const osmosisTestnetConfig: DeploymentConfig = {
   chainName: 'osmosis',
@@ -40,44 +40,6 @@ export const osmosisLocalConfig: DeploymentConfig = {
   slippage_tolerance: '0.5',
   base_asset_symbol: 'OSMO',
   second_asset_symbol: 'ATOM',
-}
-
-export const osmoAsset: AssetConfig = {
-  denom: 'uosmo',
-  initial_borrow_rate: '0.1',
-  max_loan_to_value: '0.55',
-  reserve_factor: '0.2',
-  liquidation_threshold: '0.65',
-  liquidation_bonus: '0.1',
-  interest_rate_model: {
-    optimal_utilization_rate: '0.7',
-    base: '0.3',
-    slope_1: '0.25',
-    slope_2: '0.3',
-  },
-  deposit_cap: '1000000000',
-  deposit_enabled: true,
-  borrow_enabled: true,
-  symbol: 'OSMO',
-}
-
-export const atomAsset: AssetConfig = {
-  denom: 'ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2',
-  initial_borrow_rate: '0.1',
-  max_loan_to_value: '0.65',
-  reserve_factor: '0.2',
-  liquidation_threshold: '0.7',
-  liquidation_bonus: '0.1',
-  interest_rate_model: {
-    optimal_utilization_rate: '0.1',
-    base: '0.3',
-    slope_1: '0.25',
-    slope_2: '0.3',
-  },
-  deposit_cap: '1000000000',
-  deposit_enabled: true,
-  borrow_enabled: true,
-  symbol: 'ATOM',
 }
 
 export const osmosisAddresses: Addresses = {
