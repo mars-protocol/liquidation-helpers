@@ -1,5 +1,5 @@
 [package]
-name          = "mars-liquidation-filterer"
+name          = "mars-outpost"
 version       = { workspace = true }
 authors       = { workspace = true }
 edition       = { workspace = true }
@@ -9,24 +9,17 @@ documentation = { workspace = true }
 keywords      = { workspace = true }
 
 [lib]
-crate-type = ["cdylib", "rlib"]
 doctest = false
 
 [features]
+# for quicker tests, cargo test --lib
 # for more explicit tests, cargo test --features=backtraces
 backtraces = ["cosmwasm-std/backtraces"]
 
 [dependencies]
-cosmwasm-std    = { workspace = true }
 cosmwasm-schema = { workspace = true }
-cw2             = { workspace = true }
-cw-storage-plus = { workspace = true }
-mars-outpost    = { workspace = true }
-serde           = { workspace = true }
+cosmwasm-std    = { workspace = true }
 thiserror       = { workspace = true }
 
 [dev-dependencies]
-mars-testing    = { workspace = true }
-
-[profile.release]
-overflow-checks = true
+mars-testing = { workspace = true }
