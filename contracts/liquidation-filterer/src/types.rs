@@ -1,10 +1,8 @@
-use schemars::JsonSchema;
-use serde::{Deserialize, Serialize};
-
+use cosmwasm_schema::cw_serde;
 use cosmwasm_std::{Addr, Uint128};
 
 /// Global configuration
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, Eq, JsonSchema)]
+#[cw_serde]
 pub struct Config {
     /// Contract owner
     pub owner: Addr,
@@ -14,7 +12,7 @@ pub struct Config {
 
 /// Liquidate under-collateralized native loans. Coins used to repay must be sent in the
 /// transaction this call is made.
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, Eq, JsonSchema)]
+#[cw_serde]
 pub struct Liquidate {
     /// Denom of the collateral asset, which liquidator gets from the borrower
     pub collateral_denom: String,
