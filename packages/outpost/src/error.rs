@@ -35,7 +35,7 @@ impl From<MarsError> for StdError {
     fn from(source: MarsError) -> Self {
         match source {
             MarsError::Std(e) => e,
-            e => StdError::generic_err(format!("{}", e)),
+            e => StdError::generic_err(format!("{e}")),
         }
     }
 }

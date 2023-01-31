@@ -44,7 +44,7 @@ impl fmt::Display for MarsAddressType {
             MarsAddressType::RewardsCollector => "rewards_collector",
             MarsAddressType::SafetyFund => "safety_fund",
         };
-        write!(f, "{}", s)
+        write!(f, "{s}")
     }
 }
 
