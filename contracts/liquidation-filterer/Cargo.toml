@@ -17,16 +17,14 @@ doctest = false
 backtraces = ["cosmwasm-std/backtraces"]
 
 [dependencies]
-cosmwasm-std    = { workspace = true }
-cosmwasm-schema = { workspace = true }
-cw2             = { workspace = true }
-cw-storage-plus = { workspace = true }
-mars-outpost    = { workspace = true }
-serde           = { workspace = true }
-thiserror       = { workspace = true }
+cosmwasm-std        = { workspace = true }
+cosmwasm-schema     = { workspace = true }
+cw2                 = { workspace = true }
+cw-storage-plus     = { workspace = true }
+mars-red-bank-types = { workspace = true }
+mars-utils          = { workspace = true }
+serde               = { workspace = true }
+thiserror           = { workspace = true }
 
 [dev-dependencies]
-mars-testing    = { workspace = true }
-
-[profile.release]
-overflow-checks = true
+mars-testing = { workspace = true }

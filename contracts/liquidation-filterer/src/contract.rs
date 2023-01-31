@@ -4,13 +4,13 @@ use cosmwasm_std::{
     attr, coin, to_binary, Addr, BankMsg, Binary, CosmosMsg, Deps, DepsMut, Env, MessageInfo,
     Reply, Response, StdResult, SubMsg, WasmMsg,
 };
-use mars_outpost::address_provider::MarsAddressType;
-use mars_outpost::{address_provider, red_bank};
+use mars_red_bank_types::address_provider::MarsAddressType;
+use mars_red_bank_types::{address_provider, red_bank};
 use std::collections::HashMap;
 use std::ops::SubAssign;
 
-use mars_outpost::error::MarsError;
-use mars_outpost::helpers::option_string_to_addr;
+use mars_red_bank_types::error::MarsError;
+use mars_utils::helpers::option_string_to_addr;
 
 use crate::error::ContractError;
 use crate::msg::{ExecuteMsg, InstantiateMsg, QueryMsg};

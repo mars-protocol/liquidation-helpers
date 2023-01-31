@@ -6,7 +6,7 @@ use mars_liquidation_filterer::contract::{execute, instantiate};
 use mars_liquidation_filterer::error::ContractError;
 use mars_liquidation_filterer::msg::{ExecuteMsg, InstantiateMsg};
 use mars_liquidation_filterer::state::CONFIG;
-use mars_outpost::error::MarsError;
+use mars_red_bank_types::error::MarsError;
 use mars_testing::mock_dependencies;
 
 mod helpers;

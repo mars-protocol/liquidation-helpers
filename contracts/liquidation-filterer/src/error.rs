@@ -1,5 +1,5 @@
 use cosmwasm_std::StdError;
-use mars_outpost::error::MarsError;
+use mars_red_bank_types::error::MarsError;
 use thiserror::Error;
 
 #[derive(Error, Debug, PartialEq)]
