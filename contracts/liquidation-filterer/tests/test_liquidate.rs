@@ -1,6 +1,6 @@
 use cosmwasm_std::testing::{mock_env, mock_info, MOCK_CONTRACT_ADDR};
 use cosmwasm_std::{coin, to_binary, BankMsg, CosmosMsg, SubMsg, Uint128, WasmMsg};
-use mars_outpost::error::MarsError;
+use mars_red_bank_types::{error::MarsError, red_bank};
 
 use crate::helpers::{setup_test, setup_test_with_balance};
 use mars_liquidation_filterer::contract::execute;
@@ -113,7 +113,7 @@ fn test_liquidate_many_accounts() {
         SubMsg::reply_always(
             CosmosMsg::Wasm(WasmMsg::Execute {
                 contract_addr: "red_bank".to_string(),
-                msg: to_binary(&mars_outpost::red_bank::ExecuteMsg::Liquidate {
+                msg: to_binary(&red_bank::ExecuteMsg::Liquidate {
                     collateral_denom: "uatom".to_string(),
                     user: "user_address_1".to_string(),
                     recipient: Some(info.sender.to_string())
@@ -129,7 +129,7 @@ fn test_liquidate_many_accounts() {
         SubMsg::reply_always(
             CosmosMsg::Wasm(WasmMsg::Execute {
                 contract_addr: "red_bank".to_string(),
-                msg: to_binary(&mars_outpost::red_bank::ExecuteMsg::Liquidate {
+                msg: to_binary(&red_bank::ExecuteMsg::Liquidate {
                     collateral_denom: "uatom".to_string(),
                     user: "user_address_2".to_string(),
                     recipient: Some(info.sender.to_string())
@@ -145,7 +145,7 @@ fn test_liquidate_many_accounts() {
         SubMsg::reply_always(
             CosmosMsg::Wasm(WasmMsg::Execute {
                 contract_addr: "red_bank".to_string(),
-                msg: to_binary(&mars_outpost::red_bank::ExecuteMsg::Liquidate {
+                msg: to_binary(&red_bank::ExecuteMsg::Liquidate {
                     collateral_denom: "uatom".to_string(),
                     user: "user_address_3".to_string(),
                     recipient: Some(info.sender.to_string())
