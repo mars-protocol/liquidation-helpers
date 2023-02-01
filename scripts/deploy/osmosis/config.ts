@@ -64,7 +64,7 @@ export const osmosisTestnetAddresses: Addresses = {
   addressProvider: 'osmo1cnsrp4aj2wq8gx0eyelc4r8aj0m6s9mct6gdhxwlaymaczfayvyq9rxrm2',
 }
 
-export const osmosisAddresses: Addresses = {
+export const osmosisMainnetAddresses: Addresses = {
   multisig: 'osmo1jklpvl3446z5qw58cvq8hqvthzjtsfvs9j65tq',
   addressProvider: 'TO BE INSERTED AT DEPLOYMENT',
 }
