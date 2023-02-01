@@ -1,12 +1,14 @@
-use cosmwasm_std::testing::{mock_env, mock_info, MOCK_CONTRACT_ADDR};
-use cosmwasm_std::{coin, to_binary, BankMsg, CosmosMsg, SubMsg, Uint128, WasmMsg};
+use cosmwasm_std::{
+    coin,
+    testing::{mock_env, mock_info, MOCK_CONTRACT_ADDR},
+    to_binary, BankMsg, CosmosMsg, SubMsg, Uint128, WasmMsg,
+};
+use mars_liquidation_filterer::{
+    contract::execute, error::ContractError, msg::ExecuteMsg, types::Liquidate,
+};
 use mars_red_bank_types::{error::MarsError, red_bank};
 
 use crate::helpers::{setup_test, setup_test_with_balance};
-use mars_liquidation_filterer::contract::execute;
-use mars_liquidation_filterer::error::ContractError;
-use mars_liquidation_filterer::msg::ExecuteMsg;
-use mars_liquidation_filterer::types::Liquidate;
 
 mod helpers;
 
