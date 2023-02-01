@@ -1,16 +1,11 @@
 [workspace]
-members = [
-    "contracts/liquidation-filterer",
-    "packages/chains/*",
-    "packages/outpost",
-    "packages/testing"
-]
+members = ["contracts/*"]
 
 [workspace.package]
 version       = "0.1.0"
 authors       = [
-    "Piotr Babel <piotr@delphilabs.io>",
-    "Larry Engineer <larry@delphidigital.io>"
+  "Piotr Babel <piotr@delphilabs.io>",
+  "Larry Engineer <larry@delphidigital.io>",
 ]
 edition       = "2021"
 repository    = "https://github.com/mars-protocol/liquidation-helpers"
@@ -19,26 +14,28 @@ documentation = "https://docs.marsprotocol.io/"
 keywords      = ["mars", "cosmos", "cosmwasm"]
 
 [workspace.dependencies]
-cosmwasm-schema = "1.1"
-cosmwasm-std    = "1.1"
-cw2             = "0.16"
-cw-storage-plus = "0.16"
-cw-utils        = "0.16"
-mars-osmosis    = { version = "0.1.0", path = "./packages/chains/osmosis" }
-mars-outpost    = { version = "0.1.0", path = "./packages/outpost" }
-mars-testing    = { version = "0.1.0", path = "./packages/testing" }
-osmosis-std     = "0.13.2"
-schemars        = "0.8"
-serde           = { version = "1.0", default-features = false, features = ["derive"] }
-thiserror       = "1.0"
+cosmwasm-schema     = "1.2.1"
+cosmwasm-std        = "1.2.1"
+cw2                 = "1.0.1"
+cw-storage-plus     = "1.0.1"
+cw-utils            = "1.0.1"
+# FIXME: update these once they're published to crates.io
+mars-osmosis        = { version = "1.0.0", git = "https://github.com/mars-protocol/red-bank", rev = "3e57365" }
+mars-red-bank-types = { version = "1.0.0", git = "https://github.com/mars-protocol/red-bank", rev = "3e57365" }
+mars-testing        = { version = "1.0.0", git = "https://github.com/mars-protocol/red-bank", rev = "3e57365" }
+mars-utils          = { version = "1.0.0", git = "https://github.com/mars-protocol/red-bank", rev = "3e57365" }
+osmosis-std         = "0.14.0"
+schemars            = "0.8.11"
+serde               = { version = "1.0.152", default-features = false, features = ["derive"] }
+thiserror           = "1.0.38"
 
 [profile.release]
-opt-level = 3
-debug = false
-rpath = false
-lto = true
+codegen-units    = 1
+debug            = false
 debug-assertions = false
-codegen-units = 1
-panic = 'abort'
-incremental = false
-overflow-checks = true
+incremental      = false
+lto              = true
+overflow-checks  = true
+opt-level        = 3
+panic            = "abort"
+rpath            = false
