@@ -1,5 +1,6 @@
-use crate::types::Liquidate;
 use cosmwasm_schema::{cw_serde, QueryResponses};
+
+use crate::types::Liquidate;
 
 #[cw_serde]
 pub struct InstantiateMsg {

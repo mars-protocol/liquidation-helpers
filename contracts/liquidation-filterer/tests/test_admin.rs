@@ -1,13 +1,17 @@
-use cosmwasm_std::testing::{mock_env, mock_info};
-use cosmwasm_std::{Addr, SubMsg};
-
-use crate::helpers::setup_test;
-use mars_liquidation_filterer::contract::{execute, instantiate};
-use mars_liquidation_filterer::error::ContractError;
-use mars_liquidation_filterer::msg::{ExecuteMsg, InstantiateMsg};
-use mars_liquidation_filterer::state::CONFIG;
+use cosmwasm_std::{
+    testing::{mock_env, mock_info},
+    Addr, SubMsg,
+};
+use mars_liquidation_filterer::{
+    contract::{execute, instantiate},
+    error::ContractError,
+    msg::{ExecuteMsg, InstantiateMsg},
+    state::CONFIG,
+};
 use mars_red_bank_types::error::MarsError;
 use mars_testing::mock_dependencies;
+
+use crate::helpers::setup_test;
 
 mod helpers;
 

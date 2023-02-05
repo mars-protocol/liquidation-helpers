@@ -1,8 +1,8 @@
-use cosmwasm_std::testing::{mock_env, mock_info, MockApi, MockStorage};
-use cosmwasm_std::{Coin, OwnedDeps};
-
-use mars_liquidation_filterer::contract::instantiate;
-use mars_liquidation_filterer::msg::InstantiateMsg;
+use cosmwasm_std::{
+    testing::{mock_env, mock_info, MockApi, MockStorage},
+    Coin, OwnedDeps,
+};
+use mars_liquidation_filterer::{contract::instantiate, msg::InstantiateMsg};
 use mars_testing::{mock_dependencies, MarsMockQuerier};
 
 pub fn setup_test() -> OwnedDeps<MockStorage, MockApi, MarsMockQuerier> {

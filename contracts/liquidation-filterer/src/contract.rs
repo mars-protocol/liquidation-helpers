@@ -1,21 +1,22 @@
+use std::{collections::HashMap, ops::SubAssign};
+
 #[cfg(not(feature = "library"))]
 use cosmwasm_std::entry_point;
 use cosmwasm_std::{
     attr, coin, to_binary, Addr, BankMsg, Binary, CosmosMsg, Deps, DepsMut, Env, MessageInfo,
     Reply, Response, StdResult, SubMsg, WasmMsg,
 };
-use mars_red_bank_types::address_provider::MarsAddressType;
-use mars_red_bank_types::{address_provider, red_bank};
-use std::collections::HashMap;
-use std::ops::SubAssign;
-
-use mars_red_bank_types::error::MarsError;
+use mars_red_bank_types::{
+    address_provider, address_provider::MarsAddressType, error::MarsError, red_bank,
+};
 use mars_utils::helpers::option_string_to_addr;
 
-use crate::error::ContractError;
-use crate::msg::{ExecuteMsg, InstantiateMsg, QueryMsg};
-use crate::state::CONFIG;
-use crate::types::{Config, Liquidate};
+use crate::{
+    error::ContractError,
+    msg::{ExecuteMsg, InstantiateMsg, QueryMsg},
+    state::CONFIG,
+    types::{Config, Liquidate},
+};
 
 pub const CONTRACT_NAME: &str = "crates.io:mars-liquidation-filterer";
 pub const CONTRACT_VERSION: &str = env!("CARGO_PKG_VERSION");
