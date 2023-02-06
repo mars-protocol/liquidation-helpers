@@ -93,8 +93,7 @@ fn execute_update_config(
 
     CONFIG.save(deps.storage, &config)?;
 
-    let response =
-        Response::new().add_attribute("action", "periphery/liquidation-filterer/update_config");
+    let response = Response::new().add_attribute("action", "update_config");
 
     Ok(response)
 }
@@ -153,7 +152,7 @@ fn execute_liquidate(
     };
 
     let response = Response::new()
-        .add_attributes(vec![attr("action", "periphery/liquidation-filterer/liquidate_many")])
+        .add_attributes(vec![attr("action", "liquidate_many")])
         .add_submessages(submsgs)
         .add_message(refund_msg);
 
@@ -184,7 +183,7 @@ fn execute_refund(
             to_address: recipient.to_string(),
             amount: coins,
         })
-        .add_attribute("action", "periphery/liquidation-filterer/refund")
+        .add_attribute("action", "refund")
         .add_attribute("recipient", recipient)
         .add_attribute("coins", coins_str))
 }
@@ -208,7 +207,7 @@ fn to_red_bank_liquidate_msg(
 #[entry_point]
 pub fn reply(_deps: DepsMut, _env: Env, reply: Reply) -> StdResult<Response> {
     let res = Response::new()
-        .add_attribute("action", "periphery/liquidation-filterer/handle_reply")
+        .add_attribute("action", "handle_reply")
         .add_attribute("id", reply.id.to_string())
         .add_attribute("success", reply.result.is_ok().to_string());
 
