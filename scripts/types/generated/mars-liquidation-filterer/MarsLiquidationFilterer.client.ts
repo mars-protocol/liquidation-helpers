@@ -10,15 +10,15 @@ import { Coin, StdFee } from '@cosmjs/amino'
 import {
   InstantiateMsg,
   ExecuteMsg,
+  OwnerUpdate,
   Uint128,
   Liquidate,
   QueryMsg,
-  Addr,
-  Config,
+  ConfigResponse,
 } from './MarsLiquidationFilterer.types'
 export interface MarsLiquidationFiltererReadOnlyInterface {
   contractAddress: string
-  config: () => Promise<Config>
+  config: () => Promise<ConfigResponse>
 }
 export class MarsLiquidationFiltererQueryClient
   implements MarsLiquidationFiltererReadOnlyInterface
@@ -32,7 +32,7 @@ export class MarsLiquidationFiltererQueryClient
     this.config = this.config.bind(this)
   }
 
-  config = async (): Promise<Config> => {
+  config = async (): Promise<ConfigResponse> => {
     return this.client.queryContractSmart(this.contractAddress, {
       config: {},
     })
@@ -41,13 +41,16 @@ export class MarsLiquidationFiltererQueryClient
 export interface MarsLiquidationFiltererInterface extends MarsLiquidationFiltererReadOnlyInterface {
   contractAddress: string
   sender: string
+  updateOwner: (
+    fee?: number | StdFee | 'auto',
+    memo?: string,
+    funds?: Coin[],
+  ) => Promise<ExecuteResult>
   updateConfig: (
     {
       addressProvider,
-      owner,
     }: {
       addressProvider?: string
-      owner?: string
     },
     fee?: number | StdFee | 'auto',
     memo?: string,
@@ -87,18 +90,33 @@ export class MarsLiquidationFiltererClient
     this.client = client
     this.sender = sender
     this.contractAddress = contractAddress
+    this.updateOwner = this.updateOwner.bind(this)
     this.updateConfig = this.updateConfig.bind(this)
     this.liquidateMany = this.liquidateMany.bind(this)
     this.refund = this.refund.bind(this)
   }
 
+  updateOwner = async (
+    fee: number | StdFee | 'auto' = 'auto',
+    memo?: string,
+    funds?: Coin[],
+  ): Promise<ExecuteResult> => {
+    return await this.client.execute(
+      this.sender,
+      this.contractAddress,
+      {
+        update_owner: {},
+      },
+      fee,
+      memo,
+      funds,
+    )
+  }
   updateConfig = async (
     {
       addressProvider,
-      owner,
     }: {
       addressProvider?: string
-      owner?: string
     },
     fee: number | StdFee | 'auto' = 'auto',
     memo?: string,
@@ -110,7 +128,6 @@ export class MarsLiquidationFiltererClient
       {
         update_config: {
           address_provider: addressProvider,
-          owner,
         },
       },
       fee,

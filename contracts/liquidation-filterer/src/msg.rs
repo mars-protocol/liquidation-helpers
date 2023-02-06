@@ -1,10 +1,10 @@
 use cosmwasm_schema::{cw_serde, QueryResponses};
+use mars_owner::OwnerUpdate;
 
 use crate::types::Liquidate;
 
 #[cw_serde]
 pub struct InstantiateMsg {
-    /// Contract owner
     pub owner: String,
     /// Address provider returns addresses for all protocol contracts
     pub address_provider: String,
@@ -12,9 +12,11 @@ pub struct InstantiateMsg {
 
 #[cw_serde]
 pub enum ExecuteMsg {
+    /// Manages admin role state
+    UpdateOwner(OwnerUpdate),
+
     /// Update contract config (only callable by owner)
     UpdateConfig {
-        owner: Option<String>,
         address_provider: Option<String>,
     },
 
@@ -33,6 +35,16 @@ pub enum ExecuteMsg {
 #[derive(QueryResponses)]
 pub enum QueryMsg {
     /// Query contract config
-    #[returns(crate::types::Config)]
+    #[returns(ConfigResponse)]
     Config {},
+}
+
+#[cw_serde]
+pub struct ConfigResponse {
+    /// The contract's owner
+    pub owner: Option<String>,
+    /// The contract's proposed owner
+    pub proposed_new_owner: Option<String>,
+    /// Address provider returns addresses for all protocol contracts
+    pub address_provider: String,
 }

@@ -4,8 +4,6 @@ use cosmwasm_std::{Addr, Uint128};
 /// Global configuration
 #[cw_serde]
 pub struct Config {
-    /// Contract owner
-    pub owner: Addr,
     /// Address provider returns addresses for all protocol contracts
     pub address_provider: Addr,
 }
