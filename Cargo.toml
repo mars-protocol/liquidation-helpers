@@ -2,12 +2,13 @@
 members = ["contracts/*"]
 
 [workspace.package]
-version       = "0.1.0"
+version       = "1.0.0"
 authors       = [
   "Piotr Babel <piotr@delphilabs.io>",
   "Larry Engineer <larry@delphidigital.io>",
 ]
 edition       = "2021"
+license       = "GPL-3.0-or-later"
 repository    = "https://github.com/mars-protocol/liquidation-helpers"
 homepage      = "https://marsprotocol.io"
 documentation = "https://docs.marsprotocol.io/"
@@ -18,14 +19,10 @@ cosmwasm-schema     = "1.2.1"
 cosmwasm-std        = "1.2.1"
 cw2                 = "1.0.1"
 cw-storage-plus     = "1.0.1"
-cw-utils            = "1.0.1"
-mars-osmosis        = { version = "1.0.0", git = "https://github.com/mars-protocol/red-bank", rev = "3e57365" }
 mars-owner          = "1.0.0"
-# FIXME: update these once they're published to crates.io
-mars-red-bank-types = { version = "1.0.0", git = "https://github.com/mars-protocol/red-bank", rev = "3e57365" }
-mars-testing        = { version = "1.0.0", git = "https://github.com/mars-protocol/red-bank", rev = "3e57365" }
-mars-utils          = { version = "1.0.0", git = "https://github.com/mars-protocol/red-bank", rev = "3e57365" }
-osmosis-std         = "0.14.0"
+mars-red-bank-types = { version = "1.0.0", git = "https://github.com/mars-protocol/red-bank", rev = "13fcc44" }
+mars-testing        = { version = "1.0.0", git = "https://github.com/mars-protocol/red-bank", rev = "13fcc44" }
+mars-utils          = { version = "1.0.0", git = "https://github.com/mars-protocol/red-bank", rev = "13fcc44" }
 schemars            = "0.8.11"
 serde               = { version = "1.0.152", default-features = false, features = ["derive"] }
 thiserror           = "1.0.38"

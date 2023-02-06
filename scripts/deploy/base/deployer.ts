@@ -77,7 +77,11 @@ export class Deployer {
       owner: this.deployerAddress,
       address_provider: this.addresses.addressProvider,
     }
-    await this.instantiate('liquidationFilterer', this.storage.codeIds.liquidationFilterer!, msg)
+    await this.instantiate(
+      'liquidation-filterer',
+      this.storage.codeIds['liquidation-filterer']!,
+      msg,
+    )
   }
 
   async saveDeploymentAddrsToFile() {
@@ -98,13 +102,13 @@ export class Deployer {
     }
     await this.client.execute(
       this.deployerAddress,
-      this.storage.addresses.liquidationFilterer!,
+      this.storage.addresses['liquidation-filterer']!,
       msg,
       'auto',
     )
     printYellow('Owner updated to Mutlisig for Liquidation Filterer')
     const filtererConfig = (await this.client.queryContractSmart(
-      this.storage.addresses.liquidationFilterer!,
+      this.storage.addresses['liquidation-filterer']!,
       {
         config: {},
       },
