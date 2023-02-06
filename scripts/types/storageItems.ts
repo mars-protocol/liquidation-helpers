@@ -1,11 +1,11 @@
 export interface StorageItems {
   codeIds: {
-    liquidationFilterer?: number
-    addressProvider?: number
+    'liquidation-filterer'?: number
+    'address-provider'?: number
   }
   addresses: {
-    liquidationFilterer?: string
-    addressProvider?: string
+    'liquidation-filterer'?: string
+    'address-provider'?: string
   }
   execute: {
     addressProviderUpdated?: boolean

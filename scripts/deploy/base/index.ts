@@ -9,7 +9,7 @@ export const taskRunner = async (config: DeploymentConfig, address: Addresses) =
     await deployer.assertDeployerBalance()
 
     // Upload contracts
-    await deployer.upload('liquidationFilterer', 'mars_liquidation_filterer.wasm')
+    await deployer.upload('liquidation-filterer', 'mars_liquidation_filterer.wasm')
 
     // Instantiate contracts
     await deployer.instantiateLiquidationFilterer()

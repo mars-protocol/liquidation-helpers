@@ -114,7 +114,7 @@ TBD
 
 | Contract             | Address                                                           |
 |----------------------| ----------------------------------------------------------------- |
-| liquidation-filterer | `` |
+| liquidation-filterer | `osmo1lnjyeyr5vtnsj4sv9guv7z322kmeytt3curm9u840yg2y2hk5w6qsdjjzu` |
 
 ## License
 
