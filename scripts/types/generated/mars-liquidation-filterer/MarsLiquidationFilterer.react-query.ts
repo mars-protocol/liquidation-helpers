@@ -11,11 +11,11 @@ import { StdFee, Coin } from '@cosmjs/amino'
 import {
   InstantiateMsg,
   ExecuteMsg,
+  OwnerUpdate,
   Uint128,
   Liquidate,
   QueryMsg,
-  Addr,
-  Config,
+  ConfigResponse,
 } from './MarsLiquidationFilterer.types'
 import {
   MarsLiquidationFiltererQueryClient,
@@ -44,12 +44,12 @@ export interface MarsLiquidationFiltererReactQuery<TResponse, TData = TResponse>
   }
 }
 export interface MarsLiquidationFiltererConfigQuery<TData>
-  extends MarsLiquidationFiltererReactQuery<Config, TData> {}
-export function useMarsLiquidationFiltererConfigQuery<TData = Config>({
+  extends MarsLiquidationFiltererReactQuery<ConfigResponse, TData> {}
+export function useMarsLiquidationFiltererConfigQuery<TData = ConfigResponse>({
   client,
   options,
 }: MarsLiquidationFiltererConfigQuery<TData>) {
-  return useQuery<Config, Error, TData>(
+  return useQuery<ConfigResponse, Error, TData>(
     marsLiquidationFiltererQueryKeys.config(client?.contractAddress),
     () => (client ? client.config() : Promise.reject(new Error('Invalid client'))),
     { ...options, enabled: !!client && (options?.enabled != undefined ? options.enabled : true) },
@@ -104,7 +104,6 @@ export interface MarsLiquidationFiltererUpdateConfigMutation {
   client: MarsLiquidationFiltererClient
   msg: {
     addressProvider?: string
-    owner?: string
   }
   args?: {
     fee?: number | StdFee | 'auto'
@@ -121,6 +120,26 @@ export function useMarsLiquidationFiltererUpdateConfigMutation(
   return useMutation<ExecuteResult, Error, MarsLiquidationFiltererUpdateConfigMutation>(
     ({ client, msg, args: { fee, memo, funds } = {} }) =>
       client.updateConfig(msg, fee, memo, funds),
+    options,
+  )
+}
+export interface MarsLiquidationFiltererUpdateOwnerMutation {
+  client: MarsLiquidationFiltererClient
+  msg: OwnerUpdate
+  args?: {
+    fee?: number | StdFee | 'auto'
+    memo?: string
+    funds?: Coin[]
+  }
+}
+export function useMarsLiquidationFiltererUpdateOwnerMutation(
+  options?: Omit<
+    UseMutationOptions<ExecuteResult, Error, MarsLiquidationFiltererUpdateOwnerMutation>,
+    'mutationFn'
+  >,
+) {
+  return useMutation<ExecuteResult, Error, MarsLiquidationFiltererUpdateOwnerMutation>(
+    ({ client, msg, args: { fee, memo, funds } = {} }) => client.updateOwner(msg, fee, memo, funds),
     options,
   )
 }
