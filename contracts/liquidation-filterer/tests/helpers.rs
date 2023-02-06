@@ -1,8 +1,14 @@
+#![allow(dead_code)]
+
 use cosmwasm_std::{
+    from_binary,
     testing::{mock_env, mock_info, MockApi, MockStorage},
-    Coin, OwnedDeps,
+    Coin, Deps, OwnedDeps,
 };
-use mars_liquidation_filterer::{contract::instantiate, msg::InstantiateMsg};
+use mars_liquidation_filterer::{
+    contract::{instantiate, query},
+    msg::{InstantiateMsg, QueryMsg},
+};
 use mars_testing::{mock_dependencies, MarsMockQuerier};
 
 pub fn setup_test() -> OwnedDeps<MockStorage, MockApi, MarsMockQuerier> {
@@ -22,4 +28,8 @@ pub fn setup_test_with_balance(
     instantiate(deps.as_mut(), mock_env(), info, msg).unwrap();
 
     deps
+}
+
+pub fn th_query<T: serde::de::DeserializeOwned>(deps: Deps, msg: QueryMsg) -> T {
+    from_binary(&query(deps, mock_env(), msg).unwrap()).unwrap()
 }

@@ -19,8 +19,9 @@ cosmwasm-std        = "1.2.1"
 cw2                 = "1.0.1"
 cw-storage-plus     = "1.0.1"
 cw-utils            = "1.0.1"
-# FIXME: update these once they're published to crates.io
 mars-osmosis        = { version = "1.0.0", git = "https://github.com/mars-protocol/red-bank", rev = "3e57365" }
+mars-owner          = "1.0.0"
+# FIXME: update these once they're published to crates.io
 mars-red-bank-types = { version = "1.0.0", git = "https://github.com/mars-protocol/red-bank", rev = "3e57365" }
 mars-testing        = { version = "1.0.0", git = "https://github.com/mars-protocol/red-bank", rev = "3e57365" }
 mars-utils          = { version = "1.0.0", git = "https://github.com/mars-protocol/red-bank", rev = "3e57365" }

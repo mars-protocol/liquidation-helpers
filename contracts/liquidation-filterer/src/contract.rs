@@ -6,6 +6,7 @@ use cosmwasm_std::{
     attr, coin, to_binary, Addr, BankMsg, Binary, CosmosMsg, Deps, DepsMut, Env, MessageInfo,
     Reply, Response, StdResult, SubMsg, WasmMsg,
 };
+use mars_owner::{OwnerInit::SetInitialOwner, OwnerUpdate};
 use mars_red_bank_types::{
     address_provider, address_provider::MarsAddressType, error::MarsError, red_bank,
 };
@@ -13,8 +14,8 @@ use mars_utils::helpers::option_string_to_addr;
 
 use crate::{
     error::ContractError,
-    msg::{ExecuteMsg, InstantiateMsg, QueryMsg},
-    state::CONFIG,
+    msg::{ConfigResponse, ExecuteMsg, InstantiateMsg, QueryMsg},
+    state::{CONFIG, OWNER},
     types::{Config, Liquidate},
 };
 
@@ -29,14 +30,20 @@ pub fn instantiate(
     _env: Env,
     _info: MessageInfo,
     msg: InstantiateMsg,
-) -> StdResult<Response> {
+) -> Result<Response, ContractError> {
     cw2::set_contract_version(deps.storage, CONTRACT_NAME, CONTRACT_VERSION)?;
 
+    OWNER.initialize(
+        deps.storage,
+        deps.api,
+        SetInitialOwner {
+            owner: msg.owner,
+        },
+    )?;
+
     let config = Config {
-        owner: deps.api.addr_validate(&msg.owner)?,
         address_provider: deps.api.addr_validate(&msg.address_provider)?,
     };
-
     CONFIG.save(deps.storage, &config)?;
 
     Ok(Response::default())
@@ -52,10 +59,10 @@ pub fn execute(
     msg: ExecuteMsg,
 ) -> Result<Response, ContractError> {
     match msg {
+        ExecuteMsg::UpdateOwner(update) => update_owner(deps, info, update),
         ExecuteMsg::UpdateConfig {
-            owner,
             address_provider,
-        } => Ok(execute_update_config(deps, info, owner, address_provider)?),
+        } => Ok(execute_update_config(deps, info, address_provider)?),
         ExecuteMsg::LiquidateMany {
             liquidations,
         } => execute_liquidate(deps, info, &env.contract.address, liquidations),
@@ -65,19 +72,22 @@ pub fn execute(
     }
 }
 
+fn update_owner(
+    deps: DepsMut,
+    info: MessageInfo,
+    update: OwnerUpdate,
+) -> Result<Response, ContractError> {
+    Ok(OWNER.update(deps, info, update)?)
+}
+
 fn execute_update_config(
     deps: DepsMut,
     info: MessageInfo,
-    owner: Option<String>,
     address_provider: Option<String>,
-) -> Result<Response, MarsError> {
+) -> Result<Response, ContractError> {
+    OWNER.assert_owner(deps.storage, &info.sender)?;
+
     let mut config = CONFIG.load(deps.storage)?;
-
-    if info.sender != config.owner {
-        return Err(MarsError::Unauthorized {});
-    };
-
-    config.owner = option_string_to_addr(deps.api, owner, config.owner)?;
     config.address_provider =
         option_string_to_addr(deps.api, address_provider, config.address_provider)?;
 
@@ -156,10 +166,8 @@ fn execute_refund(
     contract: &Addr,
     recipient: &str,
 ) -> Result<Response, ContractError> {
-    let config = CONFIG.load(deps.storage)?;
-
     // Only owner or contract itself (contract calls refund at the end of liquidation process) can withdraw funds
-    if !(sender == &config.owner || sender == contract) {
+    if !(OWNER.is_owner(deps.storage, sender)? || sender == contract) {
         return Err(MarsError::Unauthorized {}.into());
     };
 
@@ -221,7 +229,12 @@ pub fn query(deps: Deps, _env: Env, msg: QueryMsg) -> StdResult<Binary> {
     }
 }
 
-fn query_config(deps: Deps) -> StdResult<Config> {
+fn query_config(deps: Deps) -> StdResult<ConfigResponse> {
+    let owner_state = OWNER.query(deps.storage)?;
     let config = CONFIG.load(deps.storage)?;
-    Ok(config)
+    Ok(ConfigResponse {
+        owner: owner_state.owner,
+        proposed_new_owner: owner_state.proposed,
+        address_provider: config.address_provider.to_string(),
+    })
 }

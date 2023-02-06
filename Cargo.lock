@@ -526,6 +526,7 @@ dependencies = [
  "cosmwasm-std",
  "cw-storage-plus",
  "cw2",
+ "mars-owner",
  "mars-red-bank-types",
  "mars-testing",
  "mars-utils",
