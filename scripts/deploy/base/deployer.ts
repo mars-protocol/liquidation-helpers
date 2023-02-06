@@ -108,9 +108,9 @@ export class Deployer {
       {
         config: {},
       },
-    )) as { owner: string; prefix: string }
+    )) as { proposed_new_owner: string; prefix: string }
 
-    assert.equal(filtererConfig.owner, this.addresses.multisig)
+    assert.equal(filtererConfig.proposed_new_owner, this.addresses.multisig)
     printGreen('It is confirmed that all contracts have transferred ownership to the Multisig')
   }
 }
