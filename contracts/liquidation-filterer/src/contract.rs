@@ -107,7 +107,7 @@ fn execute_liquidate(
 ) -> Result<Response, ContractError> {
     let config = CONFIG.load(deps.storage)?;
 
-    let red_bank_addr = address_provider::helpers::query_address(
+    let red_bank_addr = address_provider::helpers::query_contract_addr(
         deps.as_ref(),
         &config.address_provider,
         MarsAddressType::RedBank,
