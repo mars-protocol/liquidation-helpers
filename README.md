@@ -35,6 +35,7 @@ Helpers smart contracts
    ```bash
    sha256sum artifacts/$CONTRACTNAME.wasm download.wasm
    ```
+
 ## Environment set up
 
 - Install [rustup][2]. Once installed, make sure you have the wasm32 target:
@@ -57,7 +58,6 @@ Helpers smart contracts
 
 - Install [Yarn][6]
 
-
 - Create the build folder:
 
    ```bash
@@ -76,6 +76,7 @@ Helpers smart contracts
    yarn format
    yarn lint
    ```
+
 This compiles and optimizes all contracts, storing them in `/artifacts` directory along with `checksum.txt` which contains sha256 hashes of each of the `.wasm` files (The script just uses CosmWasm's [rust-optimizer][7]).
 
 **Note:** Intel/Amd 64-bit processor is required. While there is experimental ARM support for CosmWasm/rust-optimizer, it's discouraged to use in production.
@@ -93,6 +94,7 @@ Creates JSON schema files for relevant contract calls, queries and query respons
 Everything related to deployment must be ran from the `scripts` directory:
 
 For the Osmosis Outpost:
+
 ```bash
 cd scripts
 # for testnet deployment:
@@ -101,6 +103,7 @@ yarn deploy:osmosis-testnet
 # for mainnet deployment:
 yarn deploy:osmosis-mainnet
 ```
+
 ## Deployments
 
 ### osmosis-1
