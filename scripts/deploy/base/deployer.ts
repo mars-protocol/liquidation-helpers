@@ -90,8 +90,10 @@ export class Deployer {
 
   async updateFiltererContractOwner() {
     const msg = {
-      update_config: {
-        owner: this.addresses.multisig,
+      update_owner: {
+        propose_new_owner: {
+          proposed: this.addresses.multisig,
+        },
       },
     }
     await this.client.execute(
