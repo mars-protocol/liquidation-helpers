@@ -6,13 +6,7 @@ export const osmosisTestnetConfig: DeploymentConfig = {
   baseAssetDenom: 'uosmo',
   chainId: 'osmo-test-4',
   chainPrefix: 'osmo',
-  channelId: 'channel-1',
-  marsDenom: 'umars',
-  rewardCollectorTimeoutBlocks: 10,
-  rewardCollectorTimeoutSeconds: 60,
   rpcEndpoint: 'https://rpc-test.osmosis.zone',
-  // permissioned testnet:
-  // rpcEndpoint: 'http://137.184.6.241:26657/',
   safetyFundFeeShare: '0.2',
   timeoutRevision: 1,
   deployerMnemonic:
@@ -28,10 +22,6 @@ export const osmosisLocalConfig: DeploymentConfig = {
   baseAssetDenom: 'uosmo',
   chainId: 'localosmosis',
   chainPrefix: 'osmo',
-  channelId: 'channel-1',
-  marsDenom: 'umars',
-  rewardCollectorTimeoutBlocks: 10,
-  rewardCollectorTimeoutSeconds: 60,
   rpcEndpoint: 'http://localhost:26657',
   safetyFundFeeShare: '0.2',
   timeoutRevision: 1,
@@ -47,10 +37,6 @@ export const osmosisMainnet: DeploymentConfig = {
   baseAssetDenom: 'uosmo',
   chainId: 'osmosis-1',
   chainPrefix: 'osmo',
-  channelId: 'TO BE INSERTED AT DEPLOYMENT',
-  marsDenom: 'umars',
-  rewardCollectorTimeoutBlocks: 10,
-  rewardCollectorTimeoutSeconds: 60,
   rpcEndpoint: 'https://rpc.osmosis.zone',
   safetyFundFeeShare: '0.2',
   timeoutRevision: 1,
@@ -60,11 +46,12 @@ export const osmosisMainnet: DeploymentConfig = {
   second_asset_symbol: 'ATOM',
 }
 export const osmosisTestnetAddresses: Addresses = {
-  multisig: 'osmo1jklpvl3446z5qw58cvq8hqvthzjtsfvs9j65tq',
+  multisig: 'osmo14w4x949nwcrqgfe53pxs3k7x53p0gvlrq34l5n',
   addressProvider: 'osmo1cnsrp4aj2wq8gx0eyelc4r8aj0m6s9mct6gdhxwlaymaczfayvyq9rxrm2',
 }
 
+// FIXME: Add in mainnet addr provider addr before deployment
 export const osmosisMainnetAddresses: Addresses = {
-  multisig: 'osmo1jklpvl3446z5qw58cvq8hqvthzjtsfvs9j65tq',
+  multisig: 'osmo14w4x949nwcrqgfe53pxs3k7x53p0gvlrq34l5n',
   addressProvider: 'TO BE INSERTED AT DEPLOYMENT',
 }

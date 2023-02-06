@@ -1,14 +1,10 @@
 export interface DeploymentConfig {
   chainName: string
-  rewardCollectorTimeoutSeconds: number
-  marsDenom: string
   baseAssetDenom: string
   atomDenom: string
   chainPrefix: string
   safetyFundFeeShare: string
-  channelId: string
   timeoutRevision: number
-  rewardCollectorTimeoutBlocks: number
   chainId: string
   rpcEndpoint: string
   deployerMnemonic: string
