@@ -2,7 +2,7 @@ import { DeploymentConfig, Addresses } from '../../types/config'
 
 export const neutronTestnetConfig: DeploymentConfig = {
   chainName: 'neutron',
-  baseAssetDenom: 'uusd',
+  baseAssetDenom: 'untrn',
   chainId: 'pion-1',
   chainPrefix: 'neutron',
   rpcEndpoint: 'https://testnet-neutron-rpc.marsprotocol.io:443',
@@ -12,7 +12,7 @@ export const neutronTestnetConfig: DeploymentConfig = {
 
 export const neutronLocalConfig: DeploymentConfig = {
   chainName: 'neutron',
-  baseAssetDenom: 'uosmo',
+  baseAssetDenom: 'untrn',
   chainId: 'localneutron',
   chainPrefix: 'neutron',
   rpcEndpoint: 'https://testnet-neutron-rpc.marsprotocol.io:443',
@@ -22,7 +22,7 @@ export const neutronLocalConfig: DeploymentConfig = {
 
 export const neutronMainnet: DeploymentConfig = {
   chainName: 'neutron',
-  baseAssetDenom: 'uosmo',
+  baseAssetDenom: 'untrn',
   chainId: 'neutron-1',
   chainPrefix: 'neutron',
   rpcEndpoint: 'https://neutron.rpc.p2p.world:443/qgrnU6PsQZA8F9S5Fb8Fn3tV3kXmMBl2M9bcc9jWLjQy8p',
