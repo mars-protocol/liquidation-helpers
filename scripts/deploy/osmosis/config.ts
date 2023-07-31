@@ -24,7 +24,7 @@ export const osmosisMainnet: DeploymentConfig = {
   baseAssetDenom: 'uosmo',
   chainId: 'osmosis-1',
   chainPrefix: 'osmo',
-  rpcEndpoint: 'https://rpc.osmosis.zone',
+  rpcEndpoint: 'https://osmosis-node.marsprotocol.io/GGSFGSFGFG34/osmosis-rpc-front/',
   deployerMnemonic: 'TO BE INSERTED AT TIME OF DEPLOYMENT',
 }
 export const osmosisTestnetAddresses: Addresses = {

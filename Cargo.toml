@@ -2,9 +2,9 @@
 members = ["contracts/*"]
 
 [workspace.package]
-version       = "1.0.0"
+version       = "1.0.1"
 authors       = [
-  "Piotr Babel <piotr@delphilabs.io>",
+  "Piotr B. <piotr@delphilabs.io>",
   "Larry Engineer <larry@delphidigital.io>",
 ]
 edition       = "2021"
@@ -15,17 +15,17 @@ documentation = "https://docs.marsprotocol.io/"
 keywords      = ["mars", "cosmos", "cosmwasm"]
 
 [workspace.dependencies]
-cosmwasm-schema     = "1.2.1"
-cosmwasm-std        = "1.2.1"
-cw2                 = "1.0.1"
-cw-storage-plus     = "1.0.1"
-mars-owner          = "1.0.0"
-mars-red-bank-types = { version = "1.0.0", git = "https://github.com/mars-protocol/red-bank", rev = "13fcc44" }
-mars-testing        = { version = "1.0.0", git = "https://github.com/mars-protocol/red-bank", rev = "13fcc44" }
-mars-utils          = { version = "1.0.0", git = "https://github.com/mars-protocol/red-bank", rev = "13fcc44" }
-schemars            = "0.8.11"
-serde               = { version = "1.0.152", default-features = false, features = ["derive"] }
-thiserror           = "1.0.38"
+cosmwasm-schema     = "1.3.1"
+cosmwasm-std        = "1.3.1"
+cw2                 = "1.1.0"
+cw-storage-plus     = "1.1.0"
+mars-owner          = "2.0.0"
+mars-red-bank-types = { git = "https://github.com/mars-protocol/red-bank", rev = "b564988" }
+mars-testing        = { git = "https://github.com/mars-protocol/red-bank", rev = "b564988" }
+mars-utils          = { git = "https://github.com/mars-protocol/red-bank", rev = "b564988" }
+schemars            = "0.8.12"
+serde               = { version = "1.0.179", default-features = false, features = ["derive"] }
+thiserror           = "1.0.44"
 
 [profile.release]
 codegen-units    = 1
