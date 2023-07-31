@@ -7,7 +7,7 @@ export const neutronTestnetConfig: DeploymentConfig = {
   chainPrefix: 'neutron',
   rpcEndpoint: 'https://testnet-neutron-rpc.marsprotocol.io:443',
   deployerMnemonic:
-  'bundle bundle orchard jeans office umbrella bird around taxi arrive infant discover elder they joy misery photo crunch gift fancy pledge attend adult eight',
+    'bundle bundle orchard jeans office umbrella bird around taxi arrive infant discover elder they joy misery photo crunch gift fancy pledge attend adult eight',
 }
 
 export const neutronLocalConfig: DeploymentConfig = {
@@ -17,7 +17,7 @@ export const neutronLocalConfig: DeploymentConfig = {
   chainPrefix: 'neutron',
   rpcEndpoint: 'https://testnet-neutron-rpc.marsprotocol.io:443',
   deployerMnemonic:
-  'bundle bundle orchard jeans office umbrella bird around taxi arrive infant discover elder they joy misery photo crunch gift fancy pledge attend adult eight',
+    'bundle bundle orchard jeans office umbrella bird around taxi arrive infant discover elder they joy misery photo crunch gift fancy pledge attend adult eight',
 }
 
 export const neutronMainnet: DeploymentConfig = {

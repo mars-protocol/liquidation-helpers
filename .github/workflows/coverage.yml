@@ -5,6 +5,7 @@ on:
     branches:
       - master
       - main
+      - release/neutron
   pull_request:
 
 env:
@@ -18,19 +19,13 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@v3
 
-      - name: Install Rust
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          target: wasm32-unknown-unknown
-          profile: minimal
-          override: true
-          components: llvm-tools-preview
-
       - name: Install cargo make
         uses: davidB/rust-cargo-make@v1
 
-      # artifacts used by tests
+      - name: Install stable Rust
+        run: cargo make install-stable
+
+      # Artifacts used by tests
       - name: Compile workspace
         run: cargo make build
 
